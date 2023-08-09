@@ -8,15 +8,32 @@ import static org.hamcrest.Matchers.equalTo;
 class PostmanEchoTest {
 
     @Test
-    void shouldReturnSendData(){
+    void shouldReturnSendDataEnglish() {
+        // Предусловия
         given()
                 .baseUri("https://postman-echo.com")
                 .body("Hi bro")
+                // Выполняемые действия
                 .when()
                 .post("/post")
+                // Проверки
                 .then()
                 .statusCode(200)
                 .body("data", equalTo("Hi bro"));
+    }
+    @Test
+    void shouldReturnSendDataRus() {
+        // Предусловия
+        given()
+                .baseUri("https://postman-echo.com")
+                .body("Привет Бро")
+                // Выполняемые действия
+                .when()
+                .post("/post")
+                // Проверки
+                .then()
+                .statusCode(200)
+                .body("data", equalTo("Привет Бро"));
     }
 }
 
